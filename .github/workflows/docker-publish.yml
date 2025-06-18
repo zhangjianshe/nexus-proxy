@@ -44,6 +44,19 @@ jobs:
             ${{ vars.DOCKER_USERNAME }}/nexus-proxy:1.0
           platforms: linux/amd64,linux/arm64
 
+      
+      - name: Build and Push
+        id: clash_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./clash
+          file: ./clash/Dockerfile
+          push: true
+          tags: |
+            ${{ vars.DOCKER_USERNAME }}/clash:${{ github.event.inputs.tag || github.sha }}
+            ${{ vars.DOCKER_USERNAME }}/clash:1.0
+          platforms: linux/amd64,linux/arm64    
+
       - name: Output Docker Image Tag
         run: |
           echo "docker_image_tag=${{ steps.docker_build.outputs.tags }}" >> $GITHUB_OUTPUT

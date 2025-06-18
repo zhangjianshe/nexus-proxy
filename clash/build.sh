@@ -1,0 +1,1 @@
+docker build -t hub.cangling.cn/mapway/clash:1.0 .
