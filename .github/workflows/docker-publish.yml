@@ -41,7 +41,7 @@ jobs:
           push: true
           tags: |
             ${{ vars.DOCKER_USERNAME }}/nexus-proxy:${{ github.event.inputs.tag || github.sha }}
-            ${{ secrets.DOCKER_USERNAME }}/nexus-proxy:1.0
+            ${{ vars.DOCKER_USERNAME }}/nexus-proxy:1.0
           platforms: linux/amd64,linux/arm64
 
       - name: Output Docker Image Tag
