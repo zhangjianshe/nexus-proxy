@@ -1,0 +1,11 @@
+services:
+  clash:
+    image: mapway/clash:1.0
+    container_name: clash
+    restart: unless-stopped
+    ports:
+      - "7890:7890"    # HTTP 代理端口
+      - "7891:7891"    # SOCKS5 代理端口
+      - "7892:7892"    # Redir 透明代理端口
+    #volumes:
+    #  - ./config.yaml:/config/config.yaml   # 本地配置挂载到容器
